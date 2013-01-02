@@ -20,25 +20,20 @@ void destroy(trie* t) {
 
 int trie_word_exists(const char* s, const trie* t) {
   unsigned char x;
-  if(*s == '\0') return 0;
-  if(s[1] == '\0') return t->present;
+  if(*s == '\0') return t->present;
   x = ord(*s);
   if(t->children[x] == NULL) return 0;
   return trie_word_exists(s + 1, t->children[x]);
 }
 
-void trie_word_insert_(const char* s, trie* t) {
-  if(s[1] != '\0') {
-    unsigned char x = ord(*s);
-    if(t->children[x] == NULL) 
-      t->children[x] = (trie*) calloc(1, sizeof(trie));
-    trie_word_insert_(s + 1, t->children[x]);
+void trie_word_insert(const char* s, trie* t) {
+  unsigned char x;
+  if(s[0] == '\0') {
+    t->present = 1;
     return;
   }
-  t->present = 1;
-}
-
-void trie_word_insert(char* s, trie* t) {
-  if(*s == '\0') return;
-  trie_word_insert_(s, t);
+  x = ord(*s);
+  if(t->children[x] == NULL) 
+    t->children[x] = (trie*) calloc(1, sizeof(trie));
+  trie_word_insert(s + 1, t->children[x]);
 }
