@@ -6,7 +6,7 @@ inline unsigned char ord(char x) {
 }
 
 trie* create() {
-  trie* t = calloc(1, sizeof(trie));
+  trie* t = (trie*) calloc(1, sizeof(trie));
   return t;
 }
 
@@ -34,6 +34,6 @@ void trie_word_insert(const char* s, trie* t) {
   }
   x = ord(*s);
   if(t->children[x] == NULL) 
-    t->children[x] = (trie*) calloc(1, sizeof(trie));
+    t->children[x] = create();
   trie_word_insert(s + 1, t->children[x]);
 }
