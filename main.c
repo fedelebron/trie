@@ -8,7 +8,7 @@ int valid(char* s) {
   do {
     char x = *ptr;
     if(x == '\'') continue;
-    if('A' >= x && 'Z' <= x) *ptr = tolower(x);
+    if('A' <= x && 'Z' >= x) *ptr = tolower(x);
     else if ('z' < x || 'a' > x) return 0;
   } while(*++ptr);
   return 1;
@@ -36,7 +36,7 @@ int main() {
 
   printf("Dictionary loaded.\n");
 
-  char delimiters[] = " \r\n";
+  char delimiters[] = " \r\n\",.():!;-_?[]";
   file = fopen(input, "r");
   if(!file) exit(2);
   line = NULL;
