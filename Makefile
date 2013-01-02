@@ -1,4 +1,4 @@
-CFLAGS = -O3 -Wall -pedantic
+CFLAGS = -O3 -Wall -Wextra -pedantic
 all: main
 trie.o: trie.c trie.h
 trie.o: trie.h
