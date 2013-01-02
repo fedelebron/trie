@@ -57,6 +57,7 @@ int main() {
     line = NULL;
   }
   free(line);
+  fclose(file);
   
   printf("Seen: %d, Checked: %d, Misspelled: %d\n", seen, checked, misspelled);
   destroy(t);
