@@ -10,6 +10,6 @@ typedef struct trie_ {
 trie* create();
 void destroy(trie* t);
 int trie_word_exists(const char* s, const trie* t);
-void trie_insert(char* s, trie* t);
+void trie_word_insert(char* s, trie* t);
 
 #endif

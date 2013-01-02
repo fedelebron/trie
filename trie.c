@@ -26,17 +26,17 @@ int trie_word_exists(const char* s, const trie* t) {
   return trie_word_exists(s + 1, t->children[x]);
 }
 
-void trie_insert_(const char* s, trie* t) {
+void trie_word_insert_(const char* s, trie* t) {
   if(s[1] != '\0') {
     char x = ord(*s);
     if(t->children[x] == NULL) 
       t->children[x] = (trie*) calloc(1, sizeof(trie));
-    return trie_insert_(s + 1, t->children[x]);
+    return trie_word_insert_(s + 1, t->children[x]);
   }
   t->present = 1;
 }
 
-void trie_insert(char* s, trie* t) {
+void trie_word_insert(char* s, trie* t) {
   if(*s == '\0') return;
-  trie_insert_(s, t);
+  trie_word_insert_(s, t);
 }

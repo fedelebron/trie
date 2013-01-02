@@ -27,7 +27,7 @@ int main() {
   ssize_t read;
   while((read = getline(&line, &length, file)) != -1) {
     line[read - 1] = '\0';
-    trie_insert(line, t);
+    trie_word_insert(line, t);
     free(line);
     line = NULL;
   }
