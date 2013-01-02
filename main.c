@@ -50,8 +50,6 @@ int main() {
         if(!trie_word_exists(ptr, t)) {
           misspelled++;
         }
-      } else {
-        printf("Invalid: %s\n", ptr);
       }
       ptr = strtok(NULL, delimiters);
     }
