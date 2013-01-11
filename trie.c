@@ -28,7 +28,7 @@ int trie_word_exists(const char* s, const trie* t) {
 
 void trie_word_insert(const char* s, trie* t) {
   unsigned char x;
-  if(s[0] == '\0') {
+  if(*s == '\0') {
     t->present = 1;
     return;
   }
